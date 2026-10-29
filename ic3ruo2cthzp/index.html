@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Shoot list</title>
+<meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121417" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Unlisted working page: the pool game shoot list. Content comes from list.md next to this file; ticks are saved on each phone. */
+:root {
+  --paper: #f4f1ea;
+  --card: #fffdf8;
+  --line: #ddd6c8;
+  --ink: #1d1f22;
+  --soft: #4f5359;
+  --muted: #80848a;
+  --felt: #1f6b4f;
+  --done: #9aa09c;
+  --display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --body: "Source Sans 3", system-ui, -apple-system, sans-serif;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #121417; --card: #1a1d21; --line: #2c3037; --ink: #eceff2; --soft: #b9bfc7; --muted: #868d96; --felt: #4cc093; --done: #5f666e; }
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font: 400 17px/1.55 var(--body); margin: 0; -webkit-text-size-adjust: 100%; }
+main { max-width: 680px; margin: 0 auto; padding: max(28px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 120px max(16px, env(safe-area-inset-left, 0px)); }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(32px, 8vw, 44px); line-height: 1; letter-spacing: -.01em; margin: 8px 0 6px; }
+.updated { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+.total { font-weight: 600; color: var(--felt); }
+h2 { font-family: var(--display); font-weight: 800; font-size: 22px; line-height: 1.15; margin: 40px 0 10px; display: flex; gap: 10px; align-items: baseline; justify-content: space-between; }
+h2 .count { font-family: var(--body); font-weight: 600; font-size: 14px; color: var(--muted); white-space: nowrap; }
+h2 .count.all { color: var(--felt); }
+p { margin: 0 0 12px; color: var(--soft); }
+p strong, li strong { color: var(--ink); }
+ul, ol { margin: 0 0 14px; padding-left: 22px; color: var(--soft); }
+li { margin: 4px 0; }
+ul.check { list-style: none; padding: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+ul.check li { margin: 0; border-top: 1px solid var(--line); }
+ul.check li:first-child { border-top: 0; }
+ul.check label { display: flex; gap: 12px; padding: 12px 14px; cursor: pointer; color: var(--ink); -webkit-tap-highlight-color: transparent; }
+ul.check input { appearance: none; -webkit-appearance: none; flex: none; width: 22px; height: 22px; margin: 1px 0 0; border: 2px solid var(--muted); border-radius: 6px; display: grid; place-content: center; cursor: pointer; }
+ul.check input::after { content: ""; width: 11px; height: 6px; border: solid #fff; border-width: 0 0 2.5px 2.5px; transform: rotate(-45deg) translate(1px, -1px); opacity: 0; }
+ul.check input:checked { background: var(--felt); border-color: var(--felt); }
+ul.check input:checked::after { opacity: 1; }
+ul.check input:focus-visible { outline: 2px solid var(--felt); outline-offset: 2px; }
+ul.check li.on span { color: var(--done); text-decoration: line-through; text-decoration-thickness: 1px; }
+ul.check li.on strong { color: var(--done); }
+.bar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--card); border-top: 1px solid var(--line); padding: 10px max(16px, env(safe-area-inset-right, 0px)) max(10px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: none; }
+.bar.show { display: block; }
+.bar .in { max-width: 680px; margin: 0 auto; display: flex; gap: 12px; align-items: center; justify-content: space-between; }
+.bar span { font-size: 15px; color: var(--soft); }
+.bar button { font: 600 16px var(--body); background: var(--felt); color: var(--card); border: 0; border-radius: 10px; padding: 10px 16px; cursor: pointer; }
+.err { color: var(--muted); }
+</style>
+</head>
+<body>
+<main id="list"><p class="err">Loading…</p></main>
+<div class="bar" id="bar"><div class="in"><span id="barText"></span><button id="send" type="button">Send to Josh</button></div></div>
+<script>
+(function () {
+  var KEY = "shootlist-ticks";
+  var mine = {};
+  try { mine = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { mine = {}; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(mine)); } catch (e) {} }
+
+  function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+  function inline(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"); }
+  function plain(s) { return s.replace(/\*\*/g, "").replace(/[,.:]+$/, ""); }
+  function idFor(section, text) {
+    var key = section + "|" + plain(text).toLowerCase().slice(0, 60), h = 5381;
+    for (var i = 0; i < key.length; i++) h = ((h << 5) + h + key.charCodeAt(i)) | 0;
+    return "i" + (h >>> 0).toString(36);
+  }
+
+  var items = [];
+  function render(md) {
+    var out = [], lines = md.replace(/\r/g, "").split("\n"), list = null, section = "", para = [];
+    function flushPara() { if (para.length) { out.push("<p>" + inline(para.join(" ")) + "</p>"); para = []; } }
+    function closeList() { if (list) { out.push("</" + (list === "ol" ? "ol" : "ul") + ">"); list = null; } }
+    function open(kind) { if (list !== kind) { closeList(); out.push(kind === "ol" ? "<ol>" : kind === "check" ? '<ul class="check">' : "<ul>"); list = kind; } }
+    lines.forEach(function (raw) {
+      var line = raw.trim(), m;
+      if (!line) { flushPara(); closeList(); return; }
+      if ((m = line.match(/^#\s+(.*)/))) { flushPara(); closeList(); out.push("<h1>" + inline(m[1]) + "</h1>"); return; }
+      if ((m = line.match(/^##\s+(.*)/))) { flushPara(); closeList(); section = plain(m[1]); out.push('<h2><span>' + inline(m[1]) + '</span><span class="count" data-sec="' + esc(section) + '"></span></h2>'); return; }
+      if ((m = line.match(/^Updated\s+(.*)/)) && out.length === 1) { out.push('<p class="updated">Updated ' + esc(m[1]) + ' · <span class="total" id="total"></span></p>'); return; }
+      if ((m = line.match(/^[-*]\s+\[( |x|X)\]\s+(.*)/))) {
+        flushPara(); open("check");
+        var id = idFor(section, m[2]), done = m[1] !== " ";
+        items.push({ id: id, section: section, text: plain(m[2]), done: done });
+        var on = id in mine ? mine[id] : done;
+        out.push('<li' + (on ? ' class="on"' : "") + '><label><input type="checkbox" data-id="' + id + '"' + (on ? " checked" : "") + "><span>" + inline(m[2]) + "</span></label></li>");
+        return;
+      }
+      if ((m = line.match(/^[-*]\s+(.*)/))) { flushPara(); open("ul"); out.push("<li>" + inline(m[1]) + "</li>"); return; }
+      if ((m = line.match(/^\d+\.\s+(.*)/))) { flushPara(); open("ol"); out.push("<li>" + inline(m[1]) + "</li>"); return; }
+      closeList(); para.push(line);
+    });
+    flushPara(); closeList();
+    document.getElementById("list").innerHTML = out.join("\n");
+    var h1 = document.querySelector("h1"); if (h1) document.title = h1.textContent;
+  }
+
+  function isOn(it) { return it.id in mine ? mine[it.id] : it.done; }
+  // What this phone ticked or unticked that the list itself doesn't show yet.
+  function changes() { return items.filter(function (it) { return it.id in mine && mine[it.id] !== it.done; }); }
+
+  function refresh() {
+    var per = {}, got = 0;
+    items.forEach(function (it) { var p = per[it.section] || (per[it.section] = [0, 0]); p[1]++; if (isOn(it)) { p[0]++; got++; } });
+    document.querySelectorAll(".count").forEach(function (el) {
+      var p = per[el.getAttribute("data-sec")]; if (!p) return;
+      el.textContent = p[0] + " of " + p[1]; el.classList.toggle("all", p[0] === p[1]);
+    });
+    var t = document.getElementById("total"); if (t) t.textContent = got + " of " + items.length + " done";
+    var c = changes(), bar = document.getElementById("bar");
+    bar.classList.toggle("show", c.length > 0);
+    document.getElementById("barText").textContent = c.length === 1 ? "1 change Josh hasn't seen" : c.length + " changes Josh hasn't seen";
+  }
+
+  function send() {
+    var lines = ["Shoot list:"], last = "";
+    changes().forEach(function (it) {
+      if (it.section !== last) { lines.push("", it.section); last = it.section; }
+      lines.push((mine[it.id] ? "✓ " : "✗ not done: ") + it.text);
+    });
+    var text = lines.join("\n");
+    if (navigator.share) { navigator.share({ text: text }).catch(function () {}); return; }
+    if (navigator.clipboard) { navigator.clipboard.writeText(text).then(function () { alert("Copied. Paste it into a message to Josh."); }); return; }
+    window.prompt("Copy this and send it to Josh:", text);
+  }
+
+  document.addEventListener("change", function (e) {
+    var box = e.target; if (!box.matches || !box.matches("input[data-id]")) return;
+    var id = box.getAttribute("data-id"), it = items.filter(function (x) { return x.id === id; })[0];
+    if (it && box.checked === it.done) delete mine[id]; else mine[id] = box.checked;
+    box.closest("li").classList.toggle("on", box.checked);
+    save(); refresh();
+  });
+  document.getElementById("send").addEventListener("click", send);
+
+  fetch("list.md", { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+    .then(function (md) {
+      render(md);
+      // Once the list itself shows a tick, this phone's copy of it isn't needed any more.
+      items.forEach(function (it) { if (it.id in mine && mine[it.id] === it.done) delete mine[it.id]; });
+      save(); refresh();
+    })
+    .catch(function () { document.getElementById("list").innerHTML = '<p class="err">Couldn\'t load the list. Check your connection and refresh.</p>'; });
+})();
+</script>
+</body>
+</html>
