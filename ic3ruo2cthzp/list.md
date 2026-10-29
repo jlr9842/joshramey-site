@@ -221,9 +221,3 @@ These are props and extras that make the room feel real. They can be shot at hom
 ## Added later
 
 Anything new that turns up goes here until it's folded into the right section.
-
-- [ ] **Corner pocket from the side, at rail height,** with a ruler standing up in the opening. It shows the pocket's shape and how high the rubber sits above the rail.
-- [ ] **Side pocket from cue height,** about a metre back from the table, crouched so the camera is just above the cloth.
-- [ ] **Jaw close-up:** where the cushion's cloth turns down into the pocket, from the side and from above.
-- [ ] **Corner casting's outer corner,** straight down, so its rounded corner shows.
-- [ ] **A diamond with a coin beside it,** straight down, for its true size and how flush it sits.
