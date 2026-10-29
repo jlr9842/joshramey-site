@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Josh Ramey</title>
+<meta name="description" content="Apps Josh Ramey builds for himself and shares: Race Day, a live NASCAR companion, and Pool Position, a scorebook and pool game.">
+<meta property="og:title" content="Josh Ramey">
+<meta property="og:description" content="Apps I build for the things I love, and share.">
+<meta property="og:image" content="https://joshramey.com/img/race-day.jpg">
+<meta property="og:url" content="https://joshramey.com/">
+<meta name="theme-color" content="#0c0e12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a garage workbench at night. One short intro, then a card per showcase site, each lit in its own app's color. */
+:root {
+  --ground: #0c0e12;
+  --panel: #14171d;
+  --line: #262b34;
+  --ink: #eef1f5;
+  --soft: #c4cbd6;
+  --muted: #8a93a1;
+  --accent: #f2c230;      /* a shared highlight, the 12 ball yellow */
+  --display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --body: "Source Sans 3", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--ground); color: var(--ink); font: 400 18px/1.6 var(--body); margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+header { padding-block: max(56px, env(safe-area-inset-top, 0px)) 40px; }
+.eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(52px, 9vw, 104px); line-height: .92; letter-spacing: -.02em; margin: 0 0 22px; }
+.lede { font-size: 22px; max-width: 36ch; margin: 0 0 10px; text-wrap: pretty; }
+.sub { color: var(--soft); max-width: 52ch; margin: 0; }
+
+.projects { display: grid; gap: 28px; padding-block: 24px 72px; }
+.card { --c: var(--accent); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 18px; overflow: hidden; text-decoration: none; transition: transform .2s ease, border-color .2s ease; }
+.card:hover { transform: translateY(-3px); border-color: var(--c); }
+.card.race { --c: #2fcf6a; }
+.card.pool { --c: #5d9df2; }
+.card figure { margin: 0; background: #07090c; }
+.card figure img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 10; }
+.card .text { padding: 32px 32px 30px; display: flex; flex-direction: column; gap: 12px; }
+.card .for { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--c); margin: 0; }
+.card h2 { font-family: var(--display); font-weight: 800; font-size: clamp(34px, 4.4vw, 48px); line-height: 1; letter-spacing: -.01em; margin: 0; }
+.card p { color: var(--soft); margin: 0; max-width: 46ch; }
+.card .go { margin-top: auto; padding-top: 8px; font-family: var(--mono); font-size: 14px; color: var(--ink); }
+.card .go span { color: var(--c); }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px max(36px, env(safe-area-inset-bottom, 0px)); color: var(--muted); font-size: 15px; }
+footer p { margin: 0 0 6px; }
+footer a { color: var(--soft); }
+
+@media (max-width: 760px) {
+  body { font-size: 17px; }
+  header { padding-top: max(40px, env(safe-area-inset-top, 0px)); }
+  .lede { font-size: 20px; }
+  .card { grid-template-columns: 1fr; }
+  .card .text { padding: 22px 20px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="eyebrow">Things I build</p>
+  <h1>Josh Ramey</h1>
+  <p class="lede">Apps I build for the things I love, and share.</p>
+  <p class="sub">Race day on the couch, pool night with a rival, and whatever comes next. Each one has its own page with screenshots and the story behind it.</p>
+</header>
+
+<main class="wrap projects">
+  <!-- New showcase sites go here: one .card per site, newest first. -->
+  <a class="card race" href="https://raceday.joshramey.com">
+    <figure><img src="img/race-day.jpg" alt="Race Day on iPhone Duo: live running order beside cards for Josh's favorite drivers." width="1200" height="825"></figure>
+    <div class="text">
+      <p class="for">iPhone Duo · iPad · iPhone</p>
+      <h2>Race Day</h2>
+      <p>A live NASCAR companion for the second screen. Timing and scoring, your drivers' cockpits, team radio transcribed as it's spoken, strategy and a live track map, all in step with the TV.</p>
+      <p class="go">raceday.joshramey.com <span aria-hidden="true">→</span></p>
+    </div>
+  </a>
+
+  <a class="card pool" href="https://poolposition.joshramey.com">
+    <figure><img src="img/pool-position.jpg" alt="Pool Position's 3D pool game on Apple TV, racked and ready to break." width="1200" height="675"></figure>
+    <div class="text">
+      <p class="for">iPhone · iPhone Duo · iPad · Apple TV</p>
+      <h2>Pool Position</h2>
+      <p>A scorebook for two rivals who play real pool, week after week, and an early look at a 3D pool game that keeps score in the same book, with your phone as the cue.</p>
+      <p class="go">poolposition.joshramey.com <span aria-hidden="true">→</span></p>
+    </div>
+  </a>
+</main>
+
+<footer class="wrap">
+  <p>Pool Position on the App Store: <a href="https://pool.joshramey.com">app info</a>, <a href="https://pool.joshramey.com/privacy.html">privacy</a> and <a href="https://pool.joshramey.com/support.html">support</a>.</p>
+  <p>© 2026 Josh Ramey</p>
+</footer>
+
+</body>
+</html>
