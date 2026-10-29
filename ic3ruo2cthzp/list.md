@@ -1,8 +1,42 @@
 # Pool game shoot and sound list
 
-Updated 2026-10-29
+Updated 2026-10-29 (helper guide and pocket shots added)
 
 These photos, measurements and sounds help make the pool game look and sound like a real hall. Anyone can help: pick a section, tick each box as you get it, and add a note if something was hard to get. Nothing has to be perfect. A clear, even, glare-free photo beats a fancy one.
+
+## Helping out? Start here
+
+Thanks for helping! You don't need to know anything about the game. Each item below says what to point the camera at and why. Pick any section, do what you can, and skip anything awkward.
+
+**What to bring:** your phone, a sheet of plain white paper, and a tape measure or ruler if you have one. A coin helps too, for scale.
+
+**Which camera:**
+
+- **Your phone** is right for almost everything: textures, pockets, measurements and sounds.
+- **The mirrorless** is worth it for the big flat shots (cloth, rail wood, walls, floor) and the room shots, where its sharper, cleaner files help most. Settings are under Camera settings below.
+
+**The 5 shots that help most right now** (the game's pockets don't look right yet):
+
+1. A corner pocket straight down from about 30 cm, with the whole metal plate and rubber rim in frame.
+2. The same corner pocket from the side, camera at rail height, with a ruler standing up in the opening.
+3. A side pocket from where you'd aim, crouched at cue height about a metre back.
+4. A close-up of a jaw: where the cushion cloth turns down into the pocket.
+5. Straight down into a pocket with the phone's torch on.
+
+They're also in the "Most needed: pockets" section, so you can tick them off.
+
+**When you're done:** tick what you got, tap **Send to Josh** at the bottom, and AirDrop him the photos (see Sending them over).
+
+## Most needed: pockets
+
+- [ ] **Corner pocket, straight down,** from about 30 cm, the whole metal plate (casting) and rubber rim in frame. A logo is fine; it gets painted out.
+- [ ] **Corner pocket from the side,** camera at rail height, with a ruler or tape standing up in the opening. Shows how high the rim sits and how the pocket drops away.
+- [ ] **Side pocket from cue height,** crouched about a metre back, as if lining up a shot.
+- [ ] **Side pocket, straight down,** from about 30 cm.
+- [ ] **Jaw close-up:** where the cushion cloth wraps the end of the cushion and turns down into the pocket. One from above, one from the side.
+- [ ] **Inside a pocket,** straight down with the phone's torch on, so the ribs in the liner show.
+- [ ] **The metal plate's outer corner,** straight down (its rounded corner and edge).
+- [ ] **A diamond with a coin beside it,** flat on, for its true size and how flush it sits.
 
 ## Quick start (read this first)
 

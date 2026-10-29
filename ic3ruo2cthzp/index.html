@@ -59,10 +59,13 @@ ul.check li.on strong { color: var(--done); }
 .bar span { font-size: 15px; color: var(--soft); }
 .bar button { font: 600 16px var(--body); background: var(--felt); color: var(--card); border: 0; border-radius: 10px; padding: 10px 16px; cursor: pointer; }
 .err { color: var(--muted); }
+.sharewrap { margin: 0 0 8px; }
+.share { font: 600 16px var(--body); background: transparent; color: var(--felt); border: 2px solid var(--felt); border-radius: 10px; padding: 10px 16px; cursor: pointer; }
 </style>
 </head>
 <body>
 <main id="list"><p class="err">Loading…</p></main>
+<p class="sharewrap" id="sharewrap"><button id="share" type="button" class="share">Share this list</button></p>
 <div class="bar" id="bar"><div class="in"><span id="barText"></span><button id="send" type="button">Send to Josh</button></div></div>
 <script>
 (function () {
@@ -146,11 +149,21 @@ ul.check li.on strong { color: var(--done); }
     save(); refresh();
   });
   document.getElementById("send").addEventListener("click", send);
+  // Send the page's own link to a helper (Messages, AirDrop), or copy it.
+  document.getElementById("share").addEventListener("click", function () {
+    var url = location.href.split("#")[0];
+    if (navigator.share) { navigator.share({ title: "Pool game shoot list", url: url }).catch(function () {}); return; }
+    if (navigator.clipboard) { navigator.clipboard.writeText(url).then(function () { alert("Link copied. Paste it into a message."); }); return; }
+    window.prompt("Copy this link:", url);
+  });
 
   fetch("list.md", { cache: "no-store" })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
     .then(function (md) {
       render(md);
+      // The share button sits under the title, once the list is drawn.
+      var u = document.querySelector(".updated"), w = document.getElementById("sharewrap");
+      (u || document.querySelector("h1")).after(w);
       // Once the list itself shows a tick, this phone's copy of it isn't needed any more.
       items.forEach(function (it) { if (it.id in mine && mine[it.id] === it.done) delete mine[it.id]; });
       save(); refresh();
