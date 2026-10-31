@@ -1,6 +1,6 @@
 # Pool game shoot and sound list
 
-Updated 2026-10-29 (helper guide and pocket shots added)
+Updated 2026-10-30 (chalk shots added)
 
 These photos, measurements and sounds help make the pool game look and sound like a real hall. Anyone can help: pick a section, tick each box as you get it, and add a note if something was hard to get. Nothing has to be perfect. A clear, even, glare-free photo beats a fancy one.
 
@@ -210,6 +210,16 @@ These are props and extras that make the room feel real. They can be shot at hom
 - [ ] **Bridge stick and cue rack** on the wall.
 - [ ] **Score beads or a chalkboard** if the hall has one.
 - [ ] **Wall decor without logos:** clocks, plain signs, a dartboard, framed pictures with no people in them.
+
+**Chalk** (the game now shows you chalking the tip: the cube comes to the cue and the chalk builds up on the tip)
+
+- [ ] **A new chalk cube**, close up: the top (the blue face), a side with the paper wrapper, and from a low angle.
+- [ ] **A worn cube**, the same three: the cup worn into the top, the paper torn, blue dust on the paper.
+- [ ] **The cue tip, bare:** straight on and from the side, the leather tan with no chalk on it.
+- [ ] **The tip freshly chalked:** the same two, an even matte blue.
+- [ ] **The tip after a few shots:** the chalk worn patchy, the leather showing through.
+- [ ] **Chalk dust on the cloth**, close up, where someone chalked over the rail.
+- [ ] **The rub in motion** (Slo-Mo, phone on a stand): a hand chalking a cue, from the side and from above, a few strokes.
 
 **Slow-motion reference videos** (Camera › Slo-Mo, phone on a stand)
 
