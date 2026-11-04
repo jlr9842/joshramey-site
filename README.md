@@ -8,7 +8,7 @@ Josh's portfolio hub. A single static page served by GitHub Pages at https://jos
 pool.joshramey.com is separate (Firebase Hosting: Pool Position's App Store privacy and support pages). Leave it alone.
 
 ## Adding a new showcase site
-Every new public showcase site gets a card here. Copy one `<a class="card">` block in `index.html`, give it its own accent color (`--c`), add one landscape screenshot to `img/` (about 1200px wide), and link the subdomain. Newest first. Showcases live on joshramey.com subdomains, never claude.ai links; an app brand with its own domain (poolpositiongame.com) is linked from its card, and joshramey.com stays the portfolio.
+Every new public showcase site gets a card here. Copy one `<a class="card">` block in `index.html`, give it its own accent color (`--c`), add one landscape screenshot to `img/` (about 1200px wide), and link the subdomain. Newest first. Showcases live on joshramey.com subdomains, never claude.ai links; an app brand with its own domain (poolposition.app) is linked from its card, and joshramey.com stays the portfolio.
 
 ## Unlisted working pages
 Some folders are private-ish working pages: not linked from anywhere, `noindex`, and named with a random string so nobody stumbles on them. Don't link them, don't list them in a sitemap or robots.txt, and don't add cards for them. This repo is public, so nothing secret goes in them.
