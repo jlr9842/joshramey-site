@@ -46,6 +46,7 @@ h1 { font-family: var(--display); font-weight: 800; font-size: clamp(52px, 9vw, 
 .card:hover { transform: translateY(-3px); border-color: var(--c); }
 .card.race { --c: #2fcf6a; }
 .card.pool { --c: #5d9df2; }
+.card.studio { --c: #f2c230; }
 .card figure { margin: 0; background: #07090c; }
 .card figure img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 10; }
 .card .text { padding: 32px 32px 30px; display: flex; flex-direction: column; gap: 12px; }
@@ -80,6 +81,16 @@ footer a { color: var(--soft); }
 
 <main class="wrap projects">
   <!-- New showcase sites go here: one .card per site, newest first. -->
+  <a class="card studio" href="https://33degrees.studio">
+    <figure><img src="img/studio.jpg" alt="The Thirty-Three Degrees Studio logo: a slanted 33 cut at 33 degrees, a yellow degree ring and a curved yellow line." width="1200" height="630"></figure>
+    <div class="text">
+      <p class="for">The studio</p>
+      <h2>Thirty-Three Degrees Studio</h2>
+      <p>The studio behind Pool Position: ProSim and Pool Position: Scorebook.</p>
+      <p class="go">33degrees.studio <span aria-hidden="true">→</span></p>
+    </div>
+  </a>
+
   <a class="card race" href="https://raceday.joshramey.com">
     <figure><img src="img/race-day.jpg" alt="Race Day on iPhone Duo: live running order beside cards for Josh's favorite drivers." width="1200" height="825"></figure>
     <div class="text">
