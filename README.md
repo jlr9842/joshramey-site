@@ -3,9 +3,9 @@
 Josh's portfolio hub. A single static page served by GitHub Pages at https://joshramey.com (www redirects here). It links to each showcase site:
 
 - Race Day: https://raceday.joshramey.com (repo `jlr9842/race-day-site`)
-- Pool Position: https://poolposition.joshramey.com (repo `jlr9842/pool-position-site`)
+- Pool Position: https://poolposition.app (repo `jlr9842/poolpositiongame-site`; poolposition.joshramey.com redirects there)
 
-pool.joshramey.com is separate (Firebase Hosting: Pool Position's App Store privacy and support pages). Leave it alone.
+pool.joshramey.com is separate (repo `jlr9842/pool-joshramey-site`, GitHub Pages): redirects to the Scorebook's pages on poolposition.app, kept only for old App Store Connect links; being retired once Scorebook 1.3 is live with the poolposition.app URLs in App Store Connect.
 
 ## Adding a new showcase site
 Every new public showcase site gets a card here. Copy one `<a class="card">` block in `index.html`, give it its own accent color (`--c`), add one landscape screenshot to `img/` (about 1200px wide), and link the subdomain. Newest first. Showcases live on joshramey.com subdomains, never claude.ai links; an app brand with its own domain (poolposition.app) is linked from its card, and joshramey.com stays the portfolio.
